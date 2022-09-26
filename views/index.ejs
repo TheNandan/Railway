@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs") %> 
+    <!-- Source and Destination Section -->
+    <div class="formele">
+     <form id="RailwayForm" name="RailwayForm" action="/" method="post" onsubmit="return validateInput()">
+        <div class="sdiv">
+            <label for="sid">Source</label><br>
+            <input type="text" name="source" id="sid" class="css-input"  value="mysore">
+        </div>
+        <div class="ddiv">
+            <label for="did">Destination</label><br>
+            <input type="text" name="dest" id="did" class="css-input"   value="banglore">
+        </div>
+        <button type="submit" class="btn">Check ?</button>
+     </form>
+    </div>
+
+    <!-- Result Section -->
+     
+    <div class="result">
+        
+        <table class="content-table" >
+            <thead>
+                <tr>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Train Name</th>
+                    <th>No Of Seats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (locals.train) {%> 
+                    <% train.forEach((info)=>{ %>
+                <tr class="active-row">
+                     
+                    <td><%= info.Source %> </td>
+                    <td><%= info.Destination %> </td>
+                    <td><%= info.TrainName %> </td>
+                    <td><%= info.Seats %> </td>
+                     
+                </tr>
+                <% }); %>
+                    <% } %>
+            </tbody>
+        </table>  
+    </div>
+<%- include("partials/footer.ejs") %> 
